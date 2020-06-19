@@ -19,13 +19,10 @@ function storedLogs(channel) {
                 storedDiv.text("");
                 first = false;
             }
-            var text = [];
-            for (var i in dweet.content) {
-                text.push(i + " : " + dweet.content[i]);
-            }
+            var text = dweet.content['msg'];
             var dt = new Date(dweet.created);
             var time = ("0" + dt.getHours()).slice(-2) + ":" + ("0" + dt.getMinutes()).slice(-2) + ":" + ("0" + dt.getSeconds()).slice(-2);
-            logList.unshift(" [ " + time + " ] " + text.join([separator = ' | ']));
+            logList.unshift(" [ " + time + " ] " + text);
         }
 
         storedDiv.append(logList.join([seperator = '<BR>']));
@@ -43,12 +40,9 @@ function realtimeLogs(channel) {
             realtimeDiv.text("");
             first = false;
         }
-        var text = [];
-        for (var i in dweet.content) {
-            text.push(i + " : " + dweet.content[i]);
-        }
+        var text = dweet.content['msg'];
         var dt = new Date(dweet.created);
         var time = ("0" + dt.getHours()).slice(-2) + ":" + ("0" + dt.getMinutes()).slice(-2) + ":" + ("0" + dt.getSeconds()).slice(-2);
-        realtimeDiv.append(" [ " + time + " ] " + text.join([separator = ' | ']) + '<BR>');
+        realtimeDiv.append(" [ " + time + " ] " + text + '<BR>');
     });
 }
