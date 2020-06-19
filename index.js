@@ -1,5 +1,6 @@
 $(function () {
     $('#channel').val(localStorage.getItem('channel'));
+
     $('#getDweets').on('click', function () {
         var channel = $('#channel').val();
         localStorage.setItem('channel', channel);
@@ -31,6 +32,7 @@ function storedLogs(channel) {
 }
 
 function realtimeLogs(channel) {
+    dweetio.stop_listening();
     var realtimeDiv = $('#realtime');
     realtimeDiv.text("Waiting for data...");
     var first = true;
