@@ -28,7 +28,9 @@
         Insert following code block in your python code to push print() logs to dweet server.
 
         <pre>
-            <code>
+            <code>import urllib.request as request
+from urllib.parse import urlencode
+
 class Logger(object):
     CHANNEL_NAME = 'my-channel'
 
@@ -55,8 +57,7 @@ class Logger(object):
             sys.stdout.terminal.write(e)
 
 
-sys.stdout = Logger()            
-            </code>
+sys.stdout = Logger()</code>
         </pre>
 
         Report a bug or a suggestion by posting an issue on the <a href="https://github.com/shantanum91/kagglewatch">git
