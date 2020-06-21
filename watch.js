@@ -15,7 +15,11 @@ function storedLogs(channel) {
     var first = true;
     dweetio.get_all_dweets_for(channel, function (err, dweets) {
         var logList = []
-        for (dweet of dweets) {
+        if (dweets === 404) {
+            storedDiv.text("No data found!");
+            return;
+        }
+        for (var dweet of dweets) {
             if (first) {
                 storedDiv.text("");
                 first = false;

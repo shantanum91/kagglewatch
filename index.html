@@ -38,10 +38,10 @@ class Logger(object):
         self.terminal = sys.stdout
 
     def write(self, message):
-        self.terminal.write(message + '\n')
-        payload = {'msg': message}
-        quoted = urlencode(payload)
-        if quoted != 'msg=%0A':
+        if message != '\n':
+            self.terminal.write(message + '\n')
+            payload = {'msg': message}
+            quoted = urlencode(payload)
             thr = threading.Thread(target=self.send, args=(quoted,), kwargs={})
             thr.start()
 
@@ -55,7 +55,6 @@ class Logger(object):
             request.urlopen(msg).read()
         except Exception as e:
             sys.stdout.terminal.write(e)
-
 
 sys.stdout = Logger()</code>
         </pre>
